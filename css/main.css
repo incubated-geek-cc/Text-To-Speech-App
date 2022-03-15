@@ -1,0 +1,49 @@
+html,
+body {
+  padding:0;
+  margin:0;
+  overflow:hidden;
+}
+body {
+  width:100vw;
+  height:100vh;
+  padding: 0.45rem 0;
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif;
+  font-size: 1rem;
+  overflow-y:auto;
+}
+#toSpeak {
+  resize:none;
+  font-size:small;
+}
+input[type=range][orient=vertical] {
+  writing-mode: bt-lr; /* IE */
+  -webkit-appearance: slider-vertical; /* Chromium */
+  width: 8px;
+  /*height: 175px;*/
+  height: calc(50vh - 6.375rem);
+  padding: 0 5px;
+}
+span.badge.badge-light.rounded-0.pl-2.pr-2.pt-1.pb-1 {
+  position:absolute;
+  top:0;
+}
+input[type=file] {
+  display:none;
+}
+.custom-select-sm {
+  width: -webkit-fill-available;
+  font-size:small;
+}
+#speechSettingsCard, 
+#uploadFileContentCard {
+  height: 50vh;
+}
+#img-preview {
+  background-image: url("../img/placeholder.png");
+  background-color: #ffffff;
+  height: calc(50vh - 9.4rem);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
