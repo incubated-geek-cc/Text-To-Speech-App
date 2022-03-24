@@ -136,7 +136,7 @@
         var imgPreview=document.getElementById('img-preview');
         var ocrProgress=document.getElementById('ocrProgress');
         var ocrProgressStatus=document.getElementById('ocrProgressStatus');
-
+        
         var uploadPDFBtn=document.getElementById('uploadPDFBtn');
         var uploadPDF=document.getElementById('uploadPDF');
         uploadPDFBtn.addEventListener('click', () => {
@@ -178,7 +178,7 @@
         uploadImg.addEventListener('change', (ev) => {
             const worker = Tesseract.createWorker({
                 workerPath: 'js/tesseract/worker.min.js',
-                langPath: 'js/tesseract',
+                langPath: 'js/tesseract/lang-data',
                 corePath: 'js/tesseract/tesseract-core.wasm.js',
                 logger: msg => {
                   console.log(msg);
@@ -188,7 +188,6 @@
                   }
 
                 }
-              }
             });
 
             let file = ev.currentTarget.files[0];
@@ -204,10 +203,22 @@
               });
             }).then((loadedImg) => {
                 (async () => {
-                  await worker.load();
-                  await worker.loadLanguage('eng');
-                  await worker.initialize('eng');
-
+                  try {
+                    await worker.load();
+                  } catch(err0) {
+                    console.log(err0);
+                  }
+                  try {
+                    await worker.loadLanguage('eng');
+                  } catch(err1) {
+                    console.log(err1);
+                  }
+                  try {
+                    await worker.initialize('eng');
+                  } catch(err2) {
+                    console.log(err2);
+                  }
+                  
                   const { data: { words } } = await worker.recognize(loadedImg);
                   let combinedText='';
                   for(let w of words) {
