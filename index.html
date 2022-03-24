@@ -57,7 +57,7 @@
                     <div class='row'> 
                       <div class='col-12'>
                         <p class='w-100'><span class='badge badge-light rounded-0'>Option 1:</span><button id='uploadPDFBtn' type="button" class="btn btn-sm btn-outline-primary rounded-0"><small>📤 Select Plaintext File</small><input id='uploadPDF' type='file' /></button>
-                        <button type="button" class="btn btn-default btn-sm border rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="📄 Upload Plaintext File" data-dismissible="true" data-placement="right" data-content='<p>All text content shall be directly input into the text field below.</p>'>&nbsp;ℹ&nbsp;</button>⇽✨</p>
+                        <button type="button" class="btn btn-default btn-sm border rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="📄 Upload Plaintext File" data-dismissible="true" data-placement="right" data-content='<p>All text content shall be directly input into the text field below.</p>'>&nbsp;ℹ&nbsp;</button>⇽✷</p>
                       </div>
                     </div>
                     <div class='row'> 
@@ -67,7 +67,7 @@
                     </div>
                     <div class='row'> 
                       <div class='col-12 mr-0'>
-                        <p class='w-100'><span class='badge badge-light rounded-0'>Option 2:</span><button id='uploadImgBtn' type="button" class="btn  btn-sm btn-outline-primary rounded-0"><small>📤 Open Image</small><input id='uploadImg' type='file' /></button><button type="button" class="btn btn-default btn-sm border rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="🖼 Upload Image File" data-dismissible="true" data-placement="right" data-content='<p>All text content embedded within in image shall be extracted and input into the text field below.</p>'>&nbsp;ℹ&nbsp;</button>⇽✨</p>
+                        <p class='w-100'><span class='badge badge-light rounded-0'>Option 2:</span><button id='uploadImgBtn' type="button" class="btn  btn-sm btn-outline-primary rounded-0"><small>📤 Open Image</small><input id='uploadImg' type='file' /></button><button type="button" class="btn btn-default btn-sm border rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="🖼 Upload Image File" data-dismissible="true" data-placement="right" data-content='<p>All text content embedded within in image shall be extracted and input into the text field below.</p>'>&nbsp;ℹ&nbsp;</button>⇽✷</p>
                       </div>
                     </div>
                     <div class='row'>
@@ -102,6 +102,24 @@
     <script src='js/ie10-viewport-bug-workaround.js'></script>
     <script src='js/bootstrap-native-v4.js'></script>
     <script src='js/tesseract/tesseract.min.js'></script>
+    <script>
+        // const { createWorker } = Tesseract;
+        // const worker = createWorker({
+        //   workerPath: 'worker.min.js',
+        //   langPath: '../lang-data',
+        //   corePath: 'tesseract-core.wasm.js',
+        //   logger: m => console.log(m),
+        // });
+
+        // (async () => {
+        //   await worker.load();
+        //   await worker.loadLanguage('eng');
+        //   await worker.initialize('eng');
+        //   const { data: { text } } = await worker.recognize('../images/testocr.png');
+        //   console.log(text);
+        //   await worker.terminate();
+        // })();
+    </script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         var popoverTargets = document.querySelectorAll("[data-content]");
@@ -158,19 +176,21 @@
         }
 
         uploadImg.addEventListener('change', (ev) => {
-            const worker = Tesseract.createWorker({
-                workerPath: 'js/tesseract/worker.min.js',
-                langPath: 'js/tesseract',
-                corePath: 'js/tesseract/tesseract-core.wasm.js',
-                logger: msg => {
-                  // console.log(msg);
-                  if(msg.status=='recognizing text') {
-                    ocrProgress['style']['width']=`${parseInt(parseFloat(msg.progress)*100)}%`;
-                    ocrProgressStatus.innerHTML=`<p class='mb-1 mt-1'>⏳ <strong>${parseInt(parseFloat(msg.progress)*100)}%</strong></p>`;
-                  }
+            const { createWorker } = Tesseract;
+            const worker = createWorker({
+              workerPath: 'js/tesseract/worker.min.js',
+              langPath: 'js/tesseract/lang-data',
+              corePath: 'js/tesseract/tesseract-core.wasm.js',
+              logger: msg => {
+                console.log(msg);
+                
+                if(msg.status=='recognizing text') {
+                  ocrProgress['style']['width']=`${parseInt(parseFloat(msg.progress)*100)}%`;
+                  ocrProgressStatus.innerHTML=`<p class='mb-1 mt-1'>⏳ <strong>${parseInt(parseFloat(msg.progress)*100)}%</strong></p>`;
                 }
+              }
             });
-            Tesseract.setLogging(true);
+
             let file = ev.currentTarget.files[0];
             if(!file) return;
             
@@ -186,14 +206,11 @@
                 (async () => {
                   await worker.load();
                   await worker.loadLanguage('eng');
-                  await worker.initialize('eng');;
+                  await worker.initialize('eng');
 
-                  let result=await worker.recognize(loadedImg);
-                  let extractedData=result.data;
-                  console.log(extractedData);
-                  let wordsArr=extractedData.words;
+                  const { data: { words } } = await worker.recognize(loadedImg);
                   let combinedText='';
-                  for(let w of wordsArr) {
+                  for(let w of words) {
                     combinedText+=(w.text)+' ';
                   }
                   inputTxt.value=combinedText;
