@@ -163,14 +163,14 @@
                 langPath: 'js/tesseract',
                 corePath: 'js/tesseract/tesseract-core.wasm.js',
                 logger: msg => {
-                  // console.log(msg);
+                  console.log(msg);
                   if(msg.status=='recognizing text') {
                     ocrProgress['style']['width']=`${parseInt(parseFloat(msg.progress)*100)}%`;
                     ocrProgressStatus.innerHTML=`<p class='mb-1 mt-1'>⏳ <strong>${parseInt(parseFloat(msg.progress)*100)}%</strong></p>`;
                   }
                 }
             });
-            Tesseract.setLogging(true);
+            // Tesseract.setLogging(true);
             let file = ev.currentTarget.files[0];
             if(!file) return;
             
