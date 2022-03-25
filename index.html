@@ -3,6 +3,7 @@
   <head>
       <meta name='google' content='notranslate' />
       <meta charset='UTF-8'>
+      <link rel='shortcut icon' href='img/favicon.ico' />
       <meta name='description' content='An Offline Text-to-Speech Browser Tool'>
       <meta name='keywords' content='OCR,Tesseract,SpeechSynthesis API,Text-to-Speech'>
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -25,146 +26,148 @@
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <body>
     <div class='container-fluid'>
-        <form id='inputForm'>
-          <div class="row">
-            <div class='col-sm-4 col-12'>
-              <div class="card rounded-0">
-                <div class="card-header">💬 <strong>Speech Settings</strong></div>
-                <div id='speechSettingsCard' class="card-body">
-                  <div class='row'>
-                    <div class='col-12'>
-                      <small class="text-muted">List of Available Voices</small>
-                      <p class='small'><select id="voices" name="voices" class="custom-select-sm rounded-0"></select></p>
-                    </div>
+        <div class="row">
+          <div class='col-sm-4 col-12'>
+            <div class="card rounded-0">
+              <div class="card-header p-1">🔊🔉🔈 <strong>Voice Settings</strong></div>
+              <div id='speechSettingsCard' class="card-body">
+                <div class='row'>
+                  <div class='col-4 col-sm-4'>
+                      <input type="range" orient="vertical" min="0.5" max="2" value="1" step="0.1" class='slider' id="rate" />
+                      <span class='badge badge-light rounded-0 p-0 ml-1'>ᴿᵃᵗᵉ<span id="rateValue">1</span></span>
                   </div>
-                  <div class='row'>
-                    <div class='col-6'>
-                        <input type="range" orient="vertical" min="0.5" max="2" value="1" step="0.1" class='slider' id="rate" />
-                        <span class='badge badge-light rounded-0 pl-2 pr-2 pt-1 pb-1'><small>Rate:</small> <span class="rate-value">1</span></span>
-                    </div>
-                    <div class='col-6 col-sm-6'>
-                      <input type="range" orient="vertical" min="0" max="2" value="1" step="0.1" id="pitch" />
-                      <span class='badge badge-light rounded-0 pl-2 pr-2 pt-1 pb-1'><small>Pitch:</small> <span class="pitch-value">1</span></span>
-                    </div>
+                  <div class='col-4 col-sm-4'>
+                    <input type="range" orient="vertical" min="0" max="2" value="1" step="0.1" id="pitch" />
+                    <span class='badge badge-light rounded-0 p-0 ml-1'>ᴾⁱᵗᶜʰ<span id="pitchValue">1</span></span>
+                  </div>
+                  <div class='col-4 col-sm-4'>
+                    <input type="range" orient="vertical" min="0" max="1" value="1" step="0.1" id="volume" />
+                    <span class='badge badge-light rounded-0 p-0 ml-1'>ⱽᵒˡᵘᵐᵉ<span id="volumeValue">1</span></span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class='col-sm-8 col-12'>
-              <div class="card rounded-0">
-                <div class="card-header">📂 <strong>Upload File Content</strong></div> 
-                <div id='uploadFileContentCard' class="card-body">
-                    <div class='row'> 
-                      <div class='col-12'>
-                        <p class='w-100'><span class='badge badge-light rounded-0'>Option 1:</span><button id='uploadPDFBtn' type="button" class="btn btn-sm btn-outline-primary rounded-0"><small>📤 Select Plaintext File</small><input id='uploadPDF' type='file' /></button>
-                        <button type="button" class="btn btn-default btn-sm border rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="📄 Upload Plaintext File" data-dismissible="true" data-placement="right" data-content='<p>All text content shall be directly input into the text field below.</p>'>&nbsp;ℹ&nbsp;</button>⇽✷</p>
-                      </div>
+          </div>
+          <div class='col-sm-8 col-12'>
+            <div class="card rounded-0">
+              <div class="card-header p-1">📤 <strong>Upload File Content</strong></div> 
+              <div id='uploadFileContentCard' class="card-body">
+                  <div class='row'> 
+                    <div class='col-12 mr-0'>
+                      <p class='w-100'><button id='uploadImgBtn' type='button' class='btn btn-sm btn-outline-primary rounded-0 mr-1'><small>📂  Select Image</small><input id='uploadImg' type='file' accept='image/*' /></button><span class='badge badge-pill badge-secondary'>ℹ</span><small class='ml-1 text-muted small'>Extracted Text-from-Image shall be auto-appended below for Speech Conversion</small></p>
                     </div>
-                    <div class='row'> 
-                      <div class='col-12 text-center'>
-                        <span class='badge badge-primary rounded-circle p-2'>or</span>
-                      </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col-4 mr-0 pr-0'>
+                      <div id='img-preview' class='small border text-center'></div>
                     </div>
-                    <div class='row'> 
-                      <div class='col-12 mr-0'>
-                        <p class='w-100'><span class='badge badge-light rounded-0'>Option 2:</span><button id='uploadImgBtn' type="button" class="btn  btn-sm btn-outline-primary rounded-0"><small>📤 Open Image</small><input id='uploadImg' type='file' /></button><button type="button" class="btn btn-default btn-sm border rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="🖼 Upload Image File" data-dismissible="true" data-placement="right" data-content='<p>All text content embedded within in image shall be extracted and input into the text field below.</p>'>&nbsp;ℹ&nbsp;</button>⇽✷</p>
+                    <div class='col-1 mr-0 pr-0 ml-0 pl-0'>⇽<small class='small'>👀 </small></div>
+                    <div class='col-7'>
+                      <small><strong>🔍 Text Extraction Process</strong></small>
+                      <div class="progress">
+                        <div id="ocrProgress" class="progress-bar progress-bar-striped progress-bar-animated"></div>
                       </div>
+                      <small id='ocrProgressStatus' class='small'></small>
                     </div>
-                    <div class='row'>
-                      <div class='col-4 mr-0 pr-0'>
-                        <div id='img-preview' class='small border text-center'></div>
-                      </div>
-                      <div class='col-1 mr-0 pr-0 ml-0 pl-0'>⇽<small class='small'>👀 </small></div>
-                      <div class='col-7'>
-                        <small><strong>🔍 Text Extraction Process</strong></small>
-                        <div class="progress">
-                          <div id="ocrProgress" class="progress-bar progress-bar-striped progress-bar-animated"></div>
-                        </div>
-                        <small id='ocrProgressStatus' class='small'></small>
-                      </div>
-                    </div>
-                </div>
+                  </div>
               </div>
             </div>
           </div>
-
-          <div class='row'>
-            <div class='col-12'>
-              <button type="submit" class="btn btn-outline-primary rounded-circle mb-2 ml-2 mt-2">▶</button>
-              <textarea id="toSpeak" class="form-control rounded-0" rows="5">Let me read this for you.</textarea>
-              <small class="text-muted">(Note: All text present would be translated to speech by voice selected.)</small> 
+        </div>
+        <hr>
+        <div class='row'>
+          <div class='col-12'>
+            <div id='controllerCard' class="card rounded-0">
+              <div class="card-header p-1">
+                  <p class='mb-2 mt-2 mr-1'>🗣💬 <strong>Text-to-Speech Controller</strong><button type="button" class="btn btn-default btn-sm border rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="🔎 User Guide 👀" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶&nbsp;⎆⎃&nbsp;<small class='text-muted'>Select <span class='badge badge-light rounded-circle border border-info text-info'><small>⯈</small></span> to listen to text․</small></p><p>❷&nbsp;⎇⎀&nbsp;<small class='text-muted'>Manual edits & inputs are enabled in the text field․</small></p><p>❸&nbsp;⎁⎂&nbsp;<small class='text-muted'>Upload an image file for text extraction. Upon completion, output shall auto-append itself to existing input content․</small></p><p><strong>ℹ Speech Controls</strong><ul><li>▶⇆⏸ <small class='text-info'>Toggle between play﹠pause.</small></li><li>▶→⏸⇆⏯ <small class='text-info'>Speech shall resume if paused before completion (assuming no stop command is triggered.).</small></li><li>⏹ <small class='text-danger'>Stops the speech regardless of completion status.</small></li></ul></p></p>">☝*</button><span class='float-right'><button id='speakBtn' class="btn btn-sm btn-outline-info rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>▶</small></button> <button id='stopBtn' class="btn btn-sm btn-outline-danger rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>■</small></button></span></p>
+              </div>
+              <div class="card-body p-0">
+                <textarea id='inputText' class="form-control rounded-0 m-0">Let me read this for you.</textarea>
+              </div>
             </div>
           </div>
-
-        </form>
+        </div>
     </div>
     <script src='js/polyfill.js'></script>
     <script src='js/ie10-viewport-bug-workaround.js'></script>
     <script src='js/bootstrap-native-v4.js'></script>
     <script src='js/tesseract/tesseract.min.js'></script>
-    <script>
-        // const { createWorker } = Tesseract;
-        // const worker = createWorker({
-        //   workerPath: 'worker.min.js',
-        //   langPath: '../lang-data',
-        //   corePath: 'tesseract-core.wasm.js',
-        //   logger: m => console.log(m),
-        // });
-
-        // (async () => {
-        //   await worker.load();
-        //   await worker.loadLanguage('eng');
-        //   await worker.initialize('eng');
-        //   const { data: { text } } = await worker.recognize('../images/testocr.png');
-        //   console.log(text);
-        //   await worker.terminate();
-        // })();
-    </script>
+    <script src='js/articulate.js'></script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        var popoverTargets = document.querySelectorAll("[data-content]");
+        var inputText=document.getElementById('inputText');
+
+        const playSymbol='▶';
+        const pauseSymbol='❚❚';
+
+        document.getElementById('speakBtn').addEventListener('click', (evt) => {
+          let isPaused=$().articulate('isPaused');
+          let isSpeaking=$().articulate('isSpeaking');
+
+          if(!isPaused && !isSpeaking) {
+            let voiceText=document.createElement('div');
+            voiceText.setAttribute('id','voiceText');
+            voiceText.innerHTML=inputText.value;
+
+            $(voiceText).articulate('speak');
+            evt.currentTarget.innerHTML=pauseSymbol;
+          } else if(!isPaused) {
+            $().articulate('pause');
+            evt.currentTarget.innerHTML=playSymbol;
+          } else if(isPaused) {
+            $().articulate('resume');
+            evt.currentTarget.innerHTML=pauseSymbol;
+          }
+        }, false);
+      
+        window.addEventListener('utteranceHasEnded', (e) => {
+          console.log('Detected');
+          document.getElementById('speakBtn').innerHTML=playSymbol;
+        }, false);
+
+        document.getElementById('stopBtn').addEventListener('click', () => {
+          $().articulate('stop');
+        }, false);
+
+        document.getElementById('pitch').addEventListener('change', (evt) => {
+          let newPitchVal=parseFloat(evt.currentTarget.value);
+          document.getElementById('pitchValue').textContent = newPitchVal;
+          $().articulate('pitch', newPitchVal);
+        }, false);
+
+        document.getElementById('rate').addEventListener('change', (evt) => {
+          let newRateVal=parseFloat(evt.currentTarget.value);
+          document.getElementById('rateValue').textContent = newRateVal;
+          $().articulate('rate', newRateVal);
+        }, false);
+
+        document.getElementById('volume').addEventListener('change', (evt) => {
+          let newVolumeVal=parseFloat(evt.currentTarget.value);
+          document.getElementById('volumeValue').textContent = newVolumeVal;
+          $().articulate('volume', newVolumeVal);
+        }, false);
+
+        var popoverTargets = document.querySelectorAll('[data-content]');
 
         Array.from(popoverTargets).map(
           popTarget => new BSN.Popover(popTarget, {
-            placement: "right",
-            animation: "show",
+            placement: 'right',
+            animation: 'show',
             delay: 100,
             dismissible: true,
-            trigger: "click"
+            trigger: 'click'
           })
         );
+
         var imgPreview=document.getElementById('img-preview');
         var ocrProgress=document.getElementById('ocrProgress');
         var ocrProgressStatus=document.getElementById('ocrProgressStatus');
-        
-        var uploadPDFBtn=document.getElementById('uploadPDFBtn');
-        var uploadPDF=document.getElementById('uploadPDF');
-        uploadPDFBtn.addEventListener('click', () => {
-          uploadPDF.click();
-        });
 
         var uploadImgBtn=document.getElementById('uploadImgBtn');
         var uploadImg=document.getElementById('uploadImg');
         uploadImgBtn.addEventListener('click', () => {
           uploadImg.click();
         });
-
-        function readFileAsText(file) {
-          return new Promise((resolve,reject) => {
-              let fileredr = new FileReader();
-              fileredr.onload = () => resolve(fileredr.result);
-              fileredr.onerror = () => reject(fileredr);
-              fileredr.readAsText(file);
-          });
-        }
-
-        uploadPDF.addEventListener('change', (ev) => {
-          let file = ev.currentTarget.files[0];
-          if(!file) return;
-          readFileAsText(file).then((txt) => {
-            inputTxt.value=txt;
-          });
-        }, false);
 
         function readFileAsDataURL(file) {
           return new Promise((resolve,reject) => {
@@ -186,13 +189,12 @@
                     ocrProgress['style']['width']=`${parseInt(parseFloat(msg.progress)*100)}%`;
                     ocrProgressStatus.innerHTML=`<p class='mb-1 mt-1'>⏳ <strong>${parseInt(parseFloat(msg.progress)*100)}%</strong></p>`;
                   }
-
                 }
             });
+            Tesseract.setLogging(true);
 
             let file = ev.currentTarget.files[0];
             if(!file) return;
-            
             readFileAsDataURL(file).then((b64str) => {
               imgPreview['style']['background-image']='url("'+b64str+'")';
               return new Promise((resolve,reject) => {
@@ -203,28 +205,18 @@
               });
             }).then((loadedImg) => {
                 (async () => {
-                  try {
-                    await worker.load();
-                  } catch(err0) {
-                    console.log(err0);
-                  }
-                  try {
-                    await worker.loadLanguage('eng');
-                  } catch(err1) {
-                    console.log(err1);
-                  }
-                  try {
-                    await worker.initialize('eng');
-                  } catch(err2) {
-                    console.log(err2);
-                  }
+                  await worker.load();
+                  await worker.loadLanguage('eng');
+                  await worker.initialize('eng');
                   
                   const { data: { words } } = await worker.recognize(loadedImg);
                   let combinedText='';
                   for(let w of words) {
-                    combinedText+=(w.text)+' ';
+                    let str=(w.text);
+                    let newStr = ( str.length>1 && str.charAt(str.length-1)=='-' ) ? str.substr(0,str.length-1) : (str+' ');
+                    combinedText+=newStr;
                   }
-                  inputTxt.value=combinedText;
+                  inputText.insertAdjacentText('beforeend', (' ' + combinedText));
 
                   await worker.terminate();
 
@@ -234,89 +226,6 @@
                 })();
             });
         }, false);
-
-        var synth = window.speechSynthesis;
-
-        var inputForm = document.querySelector('#inputForm');
-        var inputTxt = document.querySelector('#toSpeak');
-        var voiceSelect = document.querySelector('#voices');
-
-        var pitch = document.querySelector('#pitch');
-        var pitchValue = document.querySelector('.pitch-value');
-        var rate = document.querySelector('#rate');
-        var rateValue = document.querySelector('.rate-value');
-
-        var defaultVoiceIndex = 9;
-        var voices = [];
-
-        function populateVoiceList() {
-          voices = synth.getVoices().sort(function (a, b) {
-              const aname = a.name.toUpperCase(), bname = b.name.toUpperCase();
-              if ( aname < bname ) return -1;
-              else if ( aname == bname ) return 0;
-              else return +1;
-          });
-
-          var selectedIndex = voiceSelect.selectedIndex < 0 ? defaultVoiceIndex : voiceSelect.selectedIndex;
-          voiceSelect.innerHTML = '';
-          for(i = 0; i < voices.length ; i++) {
-            var option = document.createElement('option');
-            option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
-            
-            (voices[i].default) ? (option.textContent += ' [DEFAULT]') : (option.textContent += '')
-
-            option.setAttribute('data-lang', voices[i].lang);
-            option.setAttribute('data-name', voices[i].name);
-            voiceSelect.appendChild(option);
-          }
-          voiceSelect.selectedIndex = selectedIndex;
-        }
-        populateVoiceList();
-
-        if (typeof speechSynthesis !== undefined && speechSynthesis.onvoiceschanged !== undefined) {
-          speechSynthesis.onvoiceschanged = populateVoiceList;
-        }
-
-        function speak() {
-          if (synth.speaking) {
-              console.error('speechSynthesis.speaking');
-              return;
-          }
-          if (inputTxt.value !== '') {
-            var utterThis = new SpeechSynthesisUtterance(inputTxt.value);
-            utterThis.onend = ((event) => console.log('SpeechSynthesisUtterance.onend'));
-            utterThis.onerror = ((event) => console.error('SpeechSynthesisUtterance.onerror'));
-
-            utterThis.voice = voices[9];
-
-            var selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');
-            console.log(selectedOption);
-            for(i = 0; i < voices.length ; i++) {
-              if(voices[i].name === selectedOption) {
-                utterThis.voice = voices[i];
-                break;
-              }
-            }
-            utterThis.pitch = pitch.value;
-            utterThis.rate = rate.value;
-            synth.speak(utterThis);
-          }
-        }
-
-        inputForm.onsubmit = function(event) {
-          event.preventDefault();
-          speak();
-          inputTxt.blur();
-        }
-        voiceSelect.onchange = function(){
-          speak();
-        }
-        pitch.onchange = function() {
-          pitchValue.textContent = pitch.value;
-        }
-        rate.onchange = function() {
-          rateValue.textContent = rate.value;
-        }
       });
     </script>
   </body>

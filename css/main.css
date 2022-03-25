@@ -12,37 +12,45 @@ body {
   font-size: 1rem;
   overflow-y:auto;
 }
-#toSpeak {
+#inputText {
   resize:none;
   font-size:small;
+  height: 100%;
+  width:100%;
+  overflow:auto;
 }
 input[type=range][orient=vertical] {
   writing-mode: bt-lr; /* IE */
   -webkit-appearance: slider-vertical; /* Chromium */
-  width: 8px;
+  width: 4px;
   /*height: 175px;*/
-  height: calc(50vh - 6.375rem);
-  padding: 0 5px;
+  height: calc(50vh - 4.2rem);
+  padding: 0 2.5px;
 }
-span.badge.badge-light.rounded-0.pl-2.pr-2.pt-1.pb-1 {
+span.badge.badge-light.rounded-0.p-0.ml-1 {
   position:absolute;
   top:0;
+  font-family: cambria math;
+  font-weight:lighter;
 }
 input[type=file] {
   display:none;
 }
-.custom-select-sm {
+/*.custom-select-sm {
   width: -webkit-fill-available;
   font-size:small;
-}
+}*/
 #speechSettingsCard, 
 #uploadFileContentCard {
-  height: 50vh;
+  height: calc(50vh - 2px - 1.75em);
+}
+#controllerCard {
+  height: calc(100vh - (50vh - 2px - 1.75em) - 0.45rem - 0.45rem - 0.25rem - 0.25rem - 0.75rem - 0.75rem);
 }
 #img-preview {
   background-image: url("../img/placeholder.png");
   background-color: #ffffff;
-  height: calc(50vh - 9.4rem);
+  height: calc(50vh - 6.5rem);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
