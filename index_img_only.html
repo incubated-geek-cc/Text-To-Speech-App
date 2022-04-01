@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang='en' class='notranslate' translate='no'>
+  <head>
+      <meta name='google' content='notranslate' />
+      <meta charset='UTF-8'>
+      <link rel='shortcut icon' href='img/favicon.ico' />
+      <meta name='description' content='An Offline Text-to-Speech Browser Tool'>
+      <meta name='keywords' content='OCR,Tesseract,SpeechSynthesis API,Text-to-Speech'>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' />
+      <meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' />  
+      <meta http-equiv='Content-Language' content='en' />
+      <title>Text-To-Speech | Browser Tool</title>
+      <meta name='msapplication-TileColor' content='#ffffff' />
+      <meta name='theme-color' content='#ffffff' />
+      <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />
+      <meta name='apple-mobile-web-app-capable' content='yes' />
+      <meta name='mobile-web-app-capable' content='yes' />
+      <meta name='HandheldFriendly' content='True' />
+      <meta name='MobileOptimized' content='320' />  
+      <meta http-equiv='Content-Security-Policy' content='upgrade-insecure-requests' /> 
+      <link href='css/bootstrap-4.5.2.min.css' rel='stylesheet' type='text/css' />
+      <link href='css/offcanvas.css' rel='stylesheet' type='text/css' />
+      <link href='css/main.css' rel='stylesheet' type='text/css' />
+  </head>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <body>
+    <div class='container-fluid'>
+        <div class="row">
+          <div class='col-sm-4 col-12'>
+            <div class="card rounded-0">
+              <div class="card-header p-1">🔊🔉🔈 <strong>Voice Settings</strong></div>
+              <div id='speechSettingsCard' class="card-body">
+                <div class='row'>
+                  <div class='col-4 col-sm-4'>
+                      <input type="range" orient="vertical" min="0.5" max="2" value="1" step="0.1" class='slider' id="rate" />
+                      <span class='badge badge-light rounded-0 p-0 ml-1'>ᴿᵃᵗᵉ<span id="rateValue">1</span></span>
+                  </div>
+                  <div class='col-4 col-sm-4'>
+                    <input type="range" orient="vertical" min="0" max="2" value="1" step="0.1" id="pitch" />
+                    <span class='badge badge-light rounded-0 p-0 ml-1'>ᴾⁱᵗᶜʰ<span id="pitchValue">1</span></span>
+                  </div>
+                  <div class='col-4 col-sm-4'>
+                    <input type="range" orient="vertical" min="0" max="1" value="1" step="0.1" id="volume" />
+                    <span class='badge badge-light rounded-0 p-0 ml-1'>ⱽᵒˡᵘᵐᵉ<span id="volumeValue">1</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='col-sm-8 col-12'>
+            <div class="card rounded-0">
+              <div class="card-header p-1">📤 <strong>Upload File Content</strong></div> 
+              <div id='uploadFileContentCard' class="card-body">
+                  <div class='row'> 
+                    <div class='col-12 mr-0'>
+                      <p class='w-100'><button id='uploadImgBtn' type='button' class='btn btn-sm btn-outline-primary rounded-0 mr-1'><small>📂  Select Image</small><input id='uploadImg' type='file' accept='image/*' /></button><span class='badge badge-pill badge-secondary'>ℹ</span><small class='ml-1 text-muted small'>Extracted Text-from-Image shall be auto-appended below for Speech Conversion</small></p>
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col-4 mr-0 pr-0'>
+                      <div id='img-preview' class='small border text-center'></div>
+                    </div>
+                    <div class='col-1 mr-0 pr-0 ml-0 pl-0'>⇽<small class='small'>👀 </small></div>
+                    <div class='col-7'>
+                      <small><strong>🔍 Text Extraction Process</strong></small>
+                      <div class="progress">
+                        <div id="ocrProgress" class="progress-bar progress-bar-striped progress-bar-animated"></div>
+                      </div>
+                      <small id='ocrProgressStatus' class='small'></small>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class='row'>
+          <div class='col-12'>
+            <div id='controllerCard' class="card rounded-0">
+              <div class="card-header p-1">
+                  <p class='mb-2 mt-2 mr-1'>🗣💬 <strong>Text-to-Speech Controller</strong><button type="button" class="btn btn-default btn-sm border rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="🔎 User Guide 👀" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶&nbsp;⎆⎃&nbsp;<small class='text-muted'>Select <span class='badge badge-light rounded-circle border border-info text-info'><small>⯈</small></span> to listen to text․</small></p><p>❷&nbsp;⎇⎀&nbsp;<small class='text-muted'>Manual edits & inputs are enabled in the text field․</small></p><p>❸&nbsp;⎁⎂&nbsp;<small class='text-muted'>Upload an image file for text extraction. Upon completion, output shall auto-append itself to existing input content․</small></p><p><strong>ℹ Speech Controls</strong><ul><li>▶⇆⏸ <small class='text-info'>Toggle between play﹠pause.</small></li><li>▶→⏸⇆⏯ <small class='text-info'>Speech shall resume if paused before completion (assuming no stop command is triggered.).</small></li><li>⏹ <small class='text-danger'>Stops the speech regardless of completion status.</small></li></ul></p></p>">☝*</button><span class='float-right'><button id='speakBtn' class="btn btn-sm btn-outline-info rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>▶</small></button> <button id='stopBtn' class="btn btn-sm btn-outline-danger rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>■</small></button></span></p>
+              </div>
+              <div class="card-body p-0">
+                <textarea id='inputText' class="form-control rounded-0 m-0">Let me read this for you.</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script src='js/polyfill.js'></script>
+    <script src='js/ie10-viewport-bug-workaround.js'></script>
+    <script src='js/bootstrap-native-v4.js'></script>
+    <script src='js/tesseract/tesseract.min.js'></script>
+    <script src='js/articulate.js'></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        var inputText=document.getElementById('inputText');
+
+        const playSymbol='▶';
+        const pauseSymbol='❚❚';
+
+        document.getElementById('speakBtn').addEventListener('click', (evt) => {
+          let isPaused=$().articulate('isPaused');
+          let isSpeaking=$().articulate('isSpeaking');
+
+          if(!isPaused && !isSpeaking) {
+            let voiceText=document.createElement('div');
+            voiceText.setAttribute('id','voiceText');
+            voiceText.innerHTML=inputText.value;
+
+            $(voiceText).articulate('speak');
+            evt.currentTarget.innerHTML=pauseSymbol;
+          } else if(!isPaused) {
+            $().articulate('pause');
+            evt.currentTarget.innerHTML=playSymbol;
+          } else if(isPaused) {
+            $().articulate('resume');
+            evt.currentTarget.innerHTML=pauseSymbol;
+          }
+        }, false);
+      
+        window.addEventListener('utteranceHasEnded', (e) => {
+          console.log('Detected');
+          document.getElementById('speakBtn').innerHTML=playSymbol;
+        }, false);
+
+        document.getElementById('stopBtn').addEventListener('click', () => {
+          $().articulate('stop');
+        }, false);
+
+        document.getElementById('pitch').addEventListener('change', (evt) => {
+          let newPitchVal=parseFloat(evt.currentTarget.value);
+          document.getElementById('pitchValue').textContent = newPitchVal;
+          $().articulate('pitch', newPitchVal);
+        }, false);
+
+        document.getElementById('rate').addEventListener('change', (evt) => {
+          let newRateVal=parseFloat(evt.currentTarget.value);
+          document.getElementById('rateValue').textContent = newRateVal;
+          $().articulate('rate', newRateVal);
+        }, false);
+
+        document.getElementById('volume').addEventListener('change', (evt) => {
+          let newVolumeVal=parseFloat(evt.currentTarget.value);
+          document.getElementById('volumeValue').textContent = newVolumeVal;
+          $().articulate('volume', newVolumeVal);
+        }, false);
+
+        var popoverTargets = document.querySelectorAll('[data-content]');
+
+        Array.from(popoverTargets).map(
+          popTarget => new BSN.Popover(popTarget, {
+            placement: 'right',
+            animation: 'show',
+            delay: 100,
+            dismissible: true,
+            trigger: 'click'
+          })
+        );
+
+        var imgPreview=document.getElementById('img-preview');
+        var ocrProgress=document.getElementById('ocrProgress');
+        var ocrProgressStatus=document.getElementById('ocrProgressStatus');
+
+        var uploadImgBtn=document.getElementById('uploadImgBtn');
+        var uploadImg=document.getElementById('uploadImg');
+        uploadImgBtn.addEventListener('click', () => {
+          uploadImg.click();
+        });
+
+        function readFileAsDataURL(file) {
+          return new Promise((resolve,reject) => {
+              let fileredr = new FileReader();
+              fileredr.onload = () => resolve(fileredr.result);
+              fileredr.onerror = () => reject(fileredr);
+              fileredr.readAsDataURL(file);
+          });
+        }
+
+        uploadImg.addEventListener('change', (ev) => {
+            const worker = Tesseract.createWorker({
+                workerPath: 'js/tesseract/worker.min.js',
+                langPath: 'js/tesseract/lang-data/4.0.0_best',
+                corePath: 'js/tesseract/tesseract-core.wasm.js',
+                logger: msg => {
+                  console.log(msg);
+                  if(msg.status=='recognizing text') {
+                    ocrProgress['style']['width']=`${parseInt(parseFloat(msg.progress)*100)}%`;
+                    ocrProgressStatus.innerHTML=`<p class='mb-1 mt-1'>⏳ <strong>${parseInt(parseFloat(msg.progress)*100)}%</strong></p>`;
+                  }
+                }
+            });
+            Tesseract.setLogging(true);
+
+            let file = ev.currentTarget.files[0];
+            if(!file) return;
+            readFileAsDataURL(file).then((b64str) => {
+              imgPreview['style']['background-image']='url("'+b64str+'")';
+              return new Promise((resolve,reject) => {
+                const img = new Image();
+                img.onload = () => resolve(img)
+                img.onerror = (err) => reject(err);
+                img.src = b64str;
+              });
+            }).then((loadedImg) => {
+                (async () => {
+                  await worker.load();
+                  await worker.loadLanguage('eng');
+                  await worker.initialize('eng');
+                  
+                  const { data: { words } } = await worker.recognize(loadedImg);
+                  let combinedText='';
+                  for(let w of words) {
+                    let str=(w.text);
+                    let newStr = ( str.length>1 && str.charAt(str.length-1)=='-' ) ? str.substr(0,str.length-1) : (str+' ');
+                    combinedText+=newStr;
+                  }
+                  inputText.insertAdjacentText('beforeend', (' ' + combinedText));
+
+                  await worker.terminate();
+
+                  ocrProgress['style']['width']='100%';
+                  ocrProgress.classList.remove('progress-bar-animated');
+                  ocrProgressStatus.innerHTML=`<p class='mb-1 mt-1'>⌛ <strong>Done.</strong></p>`;
+                })();
+            });
+        }, false);
+      });
+    </script>
+  </body>
+</html>

@@ -39,19 +39,36 @@ input[type=file] {
 /*.custom-select-sm {
   width: -webkit-fill-available;
   font-size:small;
+  👀 
 }*/
 #speechSettingsCard, 
 #uploadFileContentCard {
   height: calc(50vh - 2px - 1.75em);
 }
 #controllerCard {
-  height: calc(100vh - (50vh - 2px - 1.75em) - 0.45rem - 0.45rem - 0.25rem - 0.25rem - 0.75rem - 0.75rem);
+  height: calc(50vh - 2px - 2.9rem);
 }
+#page-preview,
 #img-preview {
-  background-image: url("../img/placeholder.png");
+  background-image: url("../img/img_placeholder.png");
   background-color: #ffffff;
-  height: calc(50vh - 6.5rem);
+  height: calc(50vh - 6.5rem - 5.5em);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+}
+#page-preview {
+  background-image: url("../img/page_placeholder.png");
+}
+span#pageLoadingSignal {
+  visibility: hidden;
+}
+#processedPages {
+  height: calc(50vh - 2px - 1.75em - 1.75em);
+  width: -webkit-fill-available;
+  position: relative;
+  display: inline-block;
+  padding: 2px;
+  overflow: auto;
+  overflow-y: auto;
 }
