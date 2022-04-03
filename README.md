@@ -1,11 +1,12 @@
 # Text-To-Speech App
-<br/>![Cover Image](https://miro.medium.com/max/1050/1*ZYJDSDmKSzqp19W9CTnPVA.png)
+<br/>![Cover Image](https://miro.medium.com/max/1050/1*HpLqMW2nShvkHuO28XDOZw.png)
 ## A Fusion of OCR Technology (Tesseract.js) & Web Speech API 🗣💬
 ### Uses the open-sourced OCR Engine: [Tesseract.js v2](https://tesseract.projectnaptha.com/)
 ### Self-Hosted. Works offline.
 
 ### General Functionalities
 * Image-to-Text: Input image file for Text Extraction with [Tesseract-OCR](https://github.com/tesseract-ocr/tesseract)
+* PDF-to-Image-to-Text: Input PDF File to render each page image for Text Extraction with [PDF.js](https://mozilla.github.io/pdf.js/)
 * Text-to-Speech: Voice generation with Web API [SpeechSynthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
 
 ---
