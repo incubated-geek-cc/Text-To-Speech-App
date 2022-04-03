@@ -33,7 +33,7 @@
         <div class="row">
           <div class='col-sm-4 col-12'>
             <div class="card rounded-0">
-              <div class="card-header p-1">🔊🔉🔈 <strong>Voice Settings</strong></div>
+              <div class="card-header p-1">🗣 🔈 <strong>Voice Settings</strong></div>
               <div id='speechSettingsCard' class="card-body p-2">
                 <div class='row'>
                   <div class='col-4 col-sm-4'>
@@ -55,7 +55,7 @@
           <div class='col-sm-8 col-12'>
             <div class="card rounded-0">
               <div class="card-header p-1">┏🠉┓<strong>Upload File Content</strong>
-                <button type="button" class="btn btn-default btn-sm border rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="❭⎽⎽ Tesseract OCR Engine" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶&nbsp;<small class='text-muted'><a href='https://github.com/naptha/tesseract.js' target='_blank'>TesseractJS</a> is an open-sourced OCR Engine which leverages on character recognition technology for text extraction.</small></p><p>❷&nbsp;<small class='text-muted'>By default, <strong>all pages</strong> in the PDF file shall be processed for text extraction (for this release).</small></p><p>❸&nbsp;<small class='text-muted'>This software is opened to public for use licensed under ⚖ <a href='LICENSE-2.0.txt' target='_blank'>Apache-2.0 License</a>.</small></p></p>">👆*</button>
+                <button type="button" class="btn btn-outline-dark btn-sm rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="❭⎽⎽ Tesseract OCR Engine" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶&nbsp;<small class='text-muted'><a href='https://github.com/naptha/tesseract.js' target='_blank'>TesseractJS</a> is an open-sourced OCR Engine which leverages on character recognition technology for text extraction.</small></p><p>❷&nbsp;<small class='text-muted'>By default, <strong>all pages</strong> in the PDF file shall be processed for text extraction (for this release).</small></p><p>❸&nbsp;<small class='text-muted'>This software is opened to public for use licensed under ⚖ <a href='LICENSE-2.0.txt' target='_blank'>Apache-2.0 License</a>.</small></p></p>">👆*</button>
               </div> 
               <div id='uploadFileContentCard' class="card-body p-2">
                   <div class='row'> 
@@ -82,10 +82,7 @@
                     <div class='col-3 mr-0'>
                       <small id='processedPages' class='border small'></small>
                     </div>
-
-
                   </div>
-
               </div>
             </div>
           </div>
@@ -95,12 +92,10 @@
           <div class='col-12'>
             <div id='controllerCard' class="card rounded-0">
               <div class="card-header p-1">
-                  <p class='mb-2 mt-2 mr-1'>🗣💬 <strong>Text-to-Speech Controller</strong><button type="button" class="btn btn-default btn-sm border rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="🔎 User Guide 👀" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶&nbsp;⎆⎃&nbsp;<small class='text-muted'>Select <span class='badge badge-light rounded-circle border border-info text-info'><small>⯈</small></span> to listen to text․</small></p><p>❷&nbsp;⎇⎀&nbsp;<small class='text-muted'>Manual edits & inputs are enabled in the text field․</small></p><p>❸&nbsp;⎁⎂&nbsp;<small class='text-muted'>Upload an image file/pdf doc for text extraction. Upon completion, output shall auto-append itself to existing input content․</small></p><p><strong>ℹ Speech Controls</strong><ul><li>▶⇆⏸ <small class='text-info'>Toggle between play﹠pause.</small></li><li>▶→⏸⇆⏯ <small class='text-info'>Speech shall resume if paused before completion (assuming no stop command is triggered.).</small></li><li>⏹ <small class='text-danger'>Stops the speech regardless of completion status.</small></li></ul></p></p>">👆*</button><span class='float-right'><button id='speakBtn' class="btn btn-sm btn-outline-info rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>▶</small></button> <button id='stopBtn' class="btn btn-sm btn-outline-danger rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>■</small></button> <button id='downloadTextContent' class="btn btn-sm btn-light border pl-2 pr-2 pt-0 pb-1 ml-4" type='button'><small>┏🠋┓ Download Text</small></button></span></p>
- 
-
+                  <p class='mb-2 mt-2 mr-1'>💬 <strong>Text-to-Speech Controller</strong><button type="button" class="btn btn-outline-dark btn-sm rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="🔎 User Guide 👀" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶&nbsp;⎆⎃&nbsp;<small class='text-muted'>Select <span class='badge badge-light rounded-circle border border-info text-info'><small>⯈</small></span> to listen to text․</small></p><p>❷&nbsp;⎇⎀&nbsp;<small class='text-muted'>Manual edits & inputs are enabled in the text field․</small></p><p>❸&nbsp;⎁⎂&nbsp;<small class='text-muted'>Upload an image file/pdf doc for text extraction. Upon completion, output shall auto-append itself to existing input content․</small></p><p><strong>ℹ Speech Controls</strong><ul><li>▶⇆⏸ <small class='text-info'>Toggle between play﹠pause.</small></li><li>▶→⏸⇆⏯ <small class='text-info'>Speech shall resume if paused before completion (assuming no stop command is triggered.).</small></li><li>⏹ <small class='text-danger'>Stops the speech regardless of completion status.</small></li></ul></p></p>">👆*</button><span class='float-right'><button id='speakBtn' class="btn btn-sm btn-outline-info rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>▶</small></button> <button id='stopBtn' class="btn btn-sm btn-outline-danger rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>■</small></button> <button id='downloadTextContent' class="btn btn-sm btn-outline-primary pl-2 pr-2 pt-0 pb-1 ml-4" type='button'><small>┏🠋┓ Plain Text</small></button></span></p>
               </div>
               <div class="card-body p-0">
-                <textarea id='inputText' class="form-control rounded-0 m-0">Let me read this for you.</textarea>
+                <textarea id='inputText' class="form-control rounded-0 m-0"></textarea>
               </div>
             </div>
           </div>
@@ -287,10 +282,43 @@
           img.src = url;
         });
 
+        var hocrArr=[];
+        var wordStyleArr=[];
+
         async function extractPdfText(loadedImg) {
-          const { data: { words } } = await pdfWorker.recognize(loadedImg);
+          const result=await pdfWorker.recognize(loadedImg);
+          // console.log(result);
+
+          let hocr=result.data.hocr;
+          hocrArr.push(hocr);
+
+          let words=result.data.words;
           let combinedText='';
           for(let w of words) {
+            let font_name=w.font_name;
+            let font_size=w.font_size;
+            let in_dictionary=w.in_dictionary;
+            let is_bold=w.is_bold;
+            let is_italic=w.is_italic;
+            let is_monospace=w.is_monospace;
+            let is_numeric=w.is_numeric;
+            let is_serif=w.is_serif;
+            let is_smallcaps=w.is_smallcaps;
+            let is_underlined=w.is_underlined;
+
+            let styleObj={
+              "font_name":font_name,
+              "font_size":font_size,
+              "in_dictionary":in_dictionary,
+              "is_bold":is_bold,
+              "is_italic":is_italic,
+              "is_monospace":is_monospace,
+              "is_serif":is_serif,
+              "is_smallcaps":is_smallcaps,
+              "is_underlined":is_underlined
+            };
+            wordStyleArr.push(styleObj);
+
             let str=(w.text);
             let newStr = ( str.length>1 && str.charAt(str.length-1)=='-' ) ? str.substr(0,str.length-1) : (str+' ');
             combinedText+=newStr;
@@ -325,13 +353,18 @@
             pagePreview['style']['background-image']='url("'+b64str+'")';
             let loadedImg = await loadImage(b64str);
             await extractPdfText(loadedImg);
-            processedPages.insertAdjacentHTML('beforeend', "<p class='mb-1 mt-1'>🗹 Page "+currentPage+"— ⌛ <strong>Done.</strong></p>");
+            processedPages.insertAdjacentHTML('beforeend', "<p class='mb-1 mt-1'>🗹 <a href='"+b64str+"' download='"+currentPage+".png'>Page "+currentPage+"</a>— ⌛ <strong>Done.</strong></p>");
 
             await pdfWorker.terminate();
 
             currentPage++;
           } // end-while loop
+
+          // console.log(JSON.stringify(hocrArr));
+          // console.log(JSON.stringify(wordStyleArr));
           pageLoadingSignal['style']['visibility']='hidden';
+          hocrArr=[];
+          wordStyleArr=[];
         }
         
         const pixelRatio=window.devicePixelRatio*2;
@@ -359,7 +392,6 @@
             }
             return new Promise((resolve => resolve(_CANVAS.toDataURL())));
         }
-
 
         var imgPreview=document.getElementById('img-preview');
         var ocrImgProgress=document.getElementById('ocrImgProgress');
@@ -405,20 +437,53 @@
               imgPreview['style']['background-image']='url("'+b64str+'")';
               let loadedImg = await loadImage(b64str);
 
-              const { data: { words } } = await imgWorker.recognize(loadedImg);
+              const result=await imgWorker.recognize(loadedImg);
+              // console.log(result);
+
+              let hocr=result.data.hocr;
+              hocrArr.push(hocr);
+
+              let words=result.data.words;
               let combinedText='';
               for(let w of words) {
+                let font_name=w.font_name;
+                let font_size=w.font_size;
+                let in_dictionary=w.in_dictionary;
+                let is_bold=w.is_bold;
+                let is_italic=w.is_italic;
+                let is_monospace=w.is_monospace;
+                let is_numeric=w.is_numeric;
+                let is_serif=w.is_serif;
+                let is_smallcaps=w.is_smallcaps;
+                let is_underlined=w.is_underlined;
+
+                let styleObj={
+                  "font_name":font_name,
+                  "font_size":font_size,
+                  "in_dictionary":in_dictionary,
+                  "is_bold":is_bold,
+                  "is_italic":is_italic,
+                  "is_monospace":is_monospace,
+                  "is_serif":is_serif,
+                  "is_smallcaps":is_smallcaps,
+                  "is_underlined":is_underlined
+                };
+                wordStyleArr.push(styleObj);
+
                 let str=(w.text);
                 let newStr = ( str.length>1 && str.charAt(str.length-1)=='-' ) ? str.substr(0,str.length-1) : (str+' ');
                 combinedText+=newStr;
               }
               inputText.insertAdjacentText('beforeend', (' ' + combinedText));
-
               await imgWorker.terminate();
 
+              // console.log(JSON.stringify(hocrArr));
+              // console.log(JSON.stringify(wordStyleArr));
               ocrImgProgress['style']['width']='100%';
               ocrImgProgress.classList.remove('progress-bar-animated');
               ocrImgProgressStatus.innerHTML=`<p class='mb-1 mt-1'>⌛ <strong>Done.</strong></p>`;
+              hocrArr=[];
+              wordStyleArr=[];
           })();
         }, false);
       });
