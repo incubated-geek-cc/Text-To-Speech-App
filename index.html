@@ -55,7 +55,7 @@
           <div class='col-sm-8 col-12'>
             <div class="card rounded-0">
               <div class="card-header p-1">┏🠉┓<strong>Upload File Content</strong>
-                <button type="button" class="btn btn-outline-dark btn-sm rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="❭⎽⎽ Tesseract OCR Engine" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶&nbsp;<small class='text-muted'><a href='https://github.com/naptha/tesseract.js' target='_blank'>TesseractJS</a> is an open-sourced OCR Engine which leverages on character recognition technology for text extraction.</small></p><p>❷&nbsp;<small class='text-muted'>By default, <strong>all pages</strong> in the PDF file shall be processed for text extraction (for this release).</small></p><p>❸&nbsp;<small class='text-muted'>This software is opened to public for use licensed under ⚖ <a href='LICENSE-2.0.txt' target='_blank'>Apache-2.0 License</a>.</small></p></p>">👆*</button>
+                <button type="button" class="btn btn-outline-dark btn-sm rounded-circle ml-2 pl-1 pr-1 pt-0 pb-0" data-toggle="popover" data-title="❭⎽⎽ Tesseract OCR Engine" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶&nbsp;<small class='text-muted'><a href='https://github.com/naptha/tesseract.js' target='_blank'>TesseractJS</a> is an open-sourced OCR Engine which leverages on character recognition technology for text extraction.</small></p><p>❷&nbsp;<small class='text-muted'>By default, <strong>all pages</strong> in the PDF file shall be processed for text extraction (for this release).</small></p><p>❸&nbsp;<small class='text-muted'>This software is opened to public for use licensed under ⚖ <a href='LICENSE-2.0.txt' target='_blank'>Apache-2.0 License</a>.</small></p></p>"><small>👆*</small></button>
               </div> 
               <div id='uploadFileContentCard' class="card-body p-2">
                   <div class='row'> 
@@ -63,7 +63,7 @@
                       <p class='w-100'><button id='uploadImgBtn' type='button' class='btn btn-sm btn-outline-primary rounded-0'><small>📂 Select Image</small><input id='uploadImg' type='file' accept='image/*' /></button></p>
                       <hr>
                       <div id='img-preview' class='small border text-center'></div>
-                      <small><strong>🔍 Image Text Extraction</strong></small>
+                      <small><strong>🔄 Image Text Extraction</strong></small>
                       <div class="progress">
                         <div id="ocrImgProgress" class="progress-bar progress-bar-striped progress-bar-animated"></div>
                       </div>
@@ -73,13 +73,14 @@
                       <p class='w-100'><button id='uploadPDFBtn' type='button' class='btn btn-sm btn-outline-primary rounded-0'><small>📂 Select PDF</small><input id='uploadPDF' type='file' accept='.pdf,.PDF' /></button> <span id='pageLoadingSignal'><span class="spinner-border spinner-border-sm"></span>&nbsp;<small class='text-muted'>Processing Page <span id='currentPageNo'>?</span><b>&nbsp;/&nbsp;<span id="totalPages">?</span>&nbsp;</b></small></span></p>
                       <hr>
                       <div id='page-preview' class='small border text-center'></div>
-                      <small><strong>🔍 Page Text Extraction</strong></small>
+                      <small><strong>🔄 Page Text Extraction</strong></small>
                       <div class="progress">
                         <div id="ocrPageProgress" class="progress-bar progress-bar-striped progress-bar-animated"></div>
                       </div>
                       <small id='ocrPageProgressStatus' class='small'></small>
                     </div>
                     <div class='col-3 mr-0'>
+                      <small class='text-dark'>List of Processed Page(s)</small>
                       <small id='processedPages' class='border small'></small>
                     </div>
                   </div>
@@ -92,7 +93,7 @@
           <div class='col-12'>
             <div id='controllerCard' class="card rounded-0">
               <div class="card-header p-1">
-                  <p class='mb-2 mt-2 mr-1'>💬 <strong>Text-to-Speech Controller</strong><button type="button" class="btn btn-outline-dark btn-sm rounded-circle ml-2 pl-2 pr-2" data-toggle="popover" data-title="🔎 User Guide 👀" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶&nbsp;⎆⎃&nbsp;<small class='text-muted'>Select <span class='badge badge-light rounded-circle border border-info text-info'><small>⯈</small></span> to listen to text․</small></p><p>❷&nbsp;⎇⎀&nbsp;<small class='text-muted'>Manual edits & inputs are enabled in the text field․</small></p><p>❸&nbsp;⎁⎂&nbsp;<small class='text-muted'>Upload an image file/pdf doc for text extraction. Upon completion, output shall auto-append itself to existing input content․</small></p><p><strong>ℹ Speech Controls</strong><ul><li>▶⇆⏸ <small class='text-info'>Toggle between play﹠pause.</small></li><li>▶→⏸⇆⏯ <small class='text-info'>Speech shall resume if paused before completion (assuming no stop command is triggered.).</small></li><li>⏹ <small class='text-danger'>Stops the speech regardless of completion status.</small></li></ul></p></p>">👆*</button><span class='float-right'><button id='speakBtn' class="btn btn-sm btn-outline-info rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>▶</small></button> <button id='stopBtn' class="btn btn-sm btn-outline-danger rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>■</small></button> <button id='downloadTextContent' class="btn btn-sm btn-outline-primary pl-2 pr-2 pt-0 pb-1 ml-4" type='button'><small>┏🠋┓ Plain Text</small></button></span></p>
+                  <p class='mb-2 mt-2 mr-1'>💬 <strong>Text-to-Speech Controller</strong><button type="button" class="btn btn-outline-dark btn-sm rounded-circle ml-2 pl-1 pr-1 pt-0 pb-0" data-toggle="popover" data-title="🔎 User Guide 👀" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶&nbsp;⎆⎃&nbsp;<small class='text-muted'>Select <span class='badge badge-light rounded-circle border border-info text-info'><small>⯈</small></span> to listen to text․</small></p><p>❷&nbsp;⎇⎀&nbsp;<small class='text-muted'>Manual edits & inputs are enabled in the text field․</small></p><p>❸&nbsp;⎁⎂&nbsp;<small class='text-muted'>Upload an image file/pdf doc for text extraction. Upon completion, output shall auto-append itself to existing input content․</small></p><p><strong>ℹ Speech Controls</strong><ul><li>▶⇆⏸ <small class='text-info'>Toggle between play﹠pause.</small></li><li>▶→⏸⇆⏯ <small class='text-info'>Speech shall resume if paused before completion (assuming no stop command is triggered.).</small></li><li>⏹ <small class='text-danger'>Stops the speech regardless of completion status.</small></li></ul></p></p>"><small>👆*</small></button><span class='float-right'><button id='speakBtn' class="btn btn-sm btn-outline-info rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>▶</small></button> <button id='stopBtn' class="btn btn-sm btn-outline-danger rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>■</small></button> <button id='downloadTextContent' class="btn btn-sm btn-outline-primary pl-2 pr-2 pt-0 pb-1 ml-4" type='button'><small>┏🠋┓ Plain Text</small></button></span></p>
               </div>
               <div class="card-body p-0">
                 <textarea id='inputText' class="form-control rounded-0 m-0"></textarea>
@@ -107,386 +108,6 @@
     <script src='js/tesseract/tesseract.min.js'></script>
     <script src='js/pdf/pdf.min.js'></script>
     <script src='js/articulate.js'></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        var inputText=document.getElementById('inputText');
-
-        const playSymbol='▶';
-        const pauseSymbol='❚❚';
-
-        document.getElementById('speakBtn').addEventListener('click', (evt) => {
-          let isPaused=$().articulate('isPaused');
-          let isSpeaking=$().articulate('isSpeaking');
-
-          if(!isPaused && !isSpeaking) {
-            let voiceText=document.createElement('div');
-            voiceText.setAttribute('id','voiceText');
-            voiceText.innerHTML=inputText.value;
-
-            $(voiceText).articulate('speak');
-            evt.currentTarget.innerHTML=pauseSymbol;
-          } else if(!isPaused) {
-            $().articulate('pause');
-            evt.currentTarget.innerHTML=playSymbol;
-          } else if(isPaused) {
-            $().articulate('resume');
-            evt.currentTarget.innerHTML=pauseSymbol;
-          }
-        }, false);
-      
-        window.addEventListener('utteranceHasEnded', (e) => {
-          console.log('Detected');
-          document.getElementById('speakBtn').innerHTML=playSymbol;
-        }, false);
-
-        document.getElementById('stopBtn').addEventListener('click', () => {
-          $().articulate('stop');
-        }, false);
-
-        document.getElementById('pitch').addEventListener('change', (evt) => {
-          let newPitchVal=parseFloat(evt.currentTarget.value);
-          document.getElementById('pitchValue').textContent = newPitchVal;
-          $().articulate('pitch', newPitchVal);
-        }, false);
-
-        document.getElementById('rate').addEventListener('change', (evt) => {
-          let newRateVal=parseFloat(evt.currentTarget.value);
-          document.getElementById('rateValue').textContent = newRateVal;
-          $().articulate('rate', newRateVal);
-        }, false);
-
-        document.getElementById('volume').addEventListener('change', (evt) => {
-          let newVolumeVal=parseFloat(evt.currentTarget.value);
-          document.getElementById('volumeValue').textContent = newVolumeVal;
-          $().articulate('volume', newVolumeVal);
-        }, false);
-
-        var popoverTargets = document.querySelectorAll('[data-content]');
-
-        Array.from(popoverTargets).map(
-          popTarget => new BSN.Popover(popTarget, {
-            placement: 'right',
-            animation: 'show',
-            delay: 100,
-            dismissible: true,
-            trigger: 'click'
-          })
-        );
-
-        function getCurrentDatetimeStamp() {
-          const d = new Date();
-          var datestamp=d.getFullYear()+''+(d.getMonth()+1)+''+d.getDate();
-          var timestamp=d.getHours()+''+d.getMinutes()+''+d.getSeconds();
-
-          var datetimeStr=datestamp+'_'+timestamp;
-          return datetimeStr;
-        }
-
-        document.getElementById('downloadTextContent').addEventListener('click', (evt) => {
-          if (!window.Blob) {
-            alert('Your browser does not support HTML5 "Blob" function required to save a file.');
-          } else {
-            let textblob = new Blob([inputText.value], {
-                type: 'application/plaintext'
-            });
-            let dwnlnk = document.createElement('a');
-            dwnlnk.download = 'extractedTextContent_'+getCurrentDatetimeStamp()+'.txt';
-            if (window.webkitURL != null) {
-                dwnlnk.href = window.webkitURL.createObjectURL(textblob);
-            }
-            dwnlnk.click();
-          }
-        }, false);
-
-        const tesseractWorkerPath='js/tesseract/worker.min.js';
-        const tesseractLangPath='js/tesseract/lang-data/4.0.0_best';
-        const tesseractCorePath='js/tesseract/tesseract-core.wasm.js';
-
-        function readFileAsDataURL(file) {
-          return new Promise((resolve,reject) => {
-              let fileredr = new FileReader();
-              fileredr.onload = () => resolve(fileredr.result);
-              fileredr.onerror = () => reject(fileredr);
-              fileredr.readAsDataURL(file);
-          });
-        }
-
-        var pageLoadingSignal=document.getElementById('pageLoadingSignal');
-        var pagePreview=document.getElementById('page-preview');
-        var ocrPageProgress=document.getElementById('ocrPageProgress');
-        var ocrPageProgressStatus=document.getElementById('ocrPageProgressStatus');
-        
-        var processedPages=document.getElementById('processedPages');
-        var currentPageNo=document.getElementById('currentPageNo');
-        var totalPages=document.getElementById('totalPages');
-
-        var _PDF_DOC,
-            _PAGE,
-            _ZOOM_FACTOR = 1,
-            currentPage = 1,
-            noOfPages,
-            _CANVAS=document.createElement('canvas');
-
-        var uploadPDFBtn=document.getElementById('uploadPDFBtn');
-        var uploadPDF=document.getElementById('uploadPDF');
-        uploadPDFBtn.addEventListener('click', () => {
-          uploadPDF.click();
-        });
-
-        uploadPDF.addEventListener('change', function(evt) {
-            let file = evt.currentTarget.files[0];
-            if(!file) return;
-            readFileAsDataURL(file).then((b64str) => {
-              showPDF(b64str);
-            }, false);
-        });
-
-        async function showPage(pageNo) {
-            currentPage = pageNo;
-            currentPageNo.innerHTML = pageNo;
-            try {
-                _PAGE = await _PDF_DOC.getPage(pageNo);
-            } catch(error) {
-                alert(error.message);
-            }
-            return new Promise((resolve => resolve(_PAGE)));
-        }
-
-        var pdfWorker;
-        async function initPdfTesseractWorker() {
-          pdfWorker = Tesseract.createWorker({
-              workerPath: tesseractWorkerPath,
-              langPath:  tesseractLangPath,
-              corePath: tesseractCorePath,
-              logger: msg => {
-                console.log(msg);
-                if(msg.status=='recognizing text') {
-                  ocrPageProgress['style']['width']=`${parseInt(parseFloat(msg.progress)*100)}%`;
-                  ocrPageProgressStatus.innerHTML=`<p class='mb-1 mt-1'>⏳ <strong>${parseInt(parseFloat(msg.progress)*100)}%</strong></p>`;
-                }
-              }
-          });
-          Tesseract.setLogging(true);
-
-          await pdfWorker.load();
-          await pdfWorker.loadLanguage('eng');
-          await pdfWorker.initialize('eng');
-
-          return new Promise((resolve) => resolve('worker initialised.'));
-        }
-
-        const loadImage = (url) => new Promise((resolve, reject) => {
-          const img = new Image();
-          img.addEventListener('load', () => resolve(img));
-          img.addEventListener('error', (err) => reject(err));
-          img.src = url;
-        });
-
-        var hocrArr=[];
-        var wordStyleArr=[];
-
-        async function extractPdfText(loadedImg) {
-          const result=await pdfWorker.recognize(loadedImg);
-          // console.log(result);
-
-          let hocr=result.data.hocr;
-          hocrArr.push(hocr);
-
-          let words=result.data.words;
-          let combinedText='';
-          for(let w of words) {
-            let font_name=w.font_name;
-            let font_size=w.font_size;
-            let in_dictionary=w.in_dictionary;
-            let is_bold=w.is_bold;
-            let is_italic=w.is_italic;
-            let is_monospace=w.is_monospace;
-            let is_numeric=w.is_numeric;
-            let is_serif=w.is_serif;
-            let is_smallcaps=w.is_smallcaps;
-            let is_underlined=w.is_underlined;
-
-            let styleObj={
-              "font_name":font_name,
-              "font_size":font_size,
-              "in_dictionary":in_dictionary,
-              "is_bold":is_bold,
-              "is_italic":is_italic,
-              "is_monospace":is_monospace,
-              "is_serif":is_serif,
-              "is_smallcaps":is_smallcaps,
-              "is_underlined":is_underlined
-            };
-            wordStyleArr.push(styleObj);
-
-            let str=(w.text);
-            let newStr = ( str.length>1 && str.charAt(str.length-1)=='-' ) ? str.substr(0,str.length-1) : (str+' ');
-            combinedText+=newStr;
-          }
-          inputText.insertAdjacentText('beforeend', (' ' + combinedText));
-          ocrPageProgress['style']['width']='100%';
-          ocrPageProgress.classList.remove('progress-bar-animated');
-          ocrPageProgressStatus.innerHTML=`<p class='mb-1 mt-1'>⌛ <strong>Done.</strong></p>`;
-
-          return new Promise((resolve) => resolve('extraction done.'));
-        }
-
-        async function showPDF(pdf_url) {
-          pdfjsLib.GlobalWorkerOptions.workerSrc = 'js/pdf/pdf.worker.min.js';
-          try {
-              _PDF_DOC = await pdfjsLib.getDocument({ url: pdf_url });
-          } catch(error) {
-              console.log(error.message);
-              throw new Error(error.message);
-          }
-          noOfPages = _PDF_DOC.numPages;
-          totalPages.innerHTML = noOfPages;
-
-          while(currentPage<=noOfPages) {
-            await initPdfTesseractWorker();
-
-            pageLoadingSignal['style']['visibility']='visible';
-            currentPageNo.innerHTML=currentPage;
-
-            _PAGE=await showPage(currentPage);
-            let b64str=await scalePDFPage();
-            pagePreview['style']['background-image']='url("'+b64str+'")';
-            let loadedImg = await loadImage(b64str);
-            await extractPdfText(loadedImg);
-            processedPages.insertAdjacentHTML('beforeend', "<p class='mb-1 mt-1'>🗹 <a href='"+b64str+"' download='"+currentPage+".png'>Page "+currentPage+"</a>— ⌛ <strong>Done.</strong></p>");
-
-            await pdfWorker.terminate();
-
-            currentPage++;
-          } // end-while loop
-
-          // console.log(JSON.stringify(hocrArr));
-          // console.log(JSON.stringify(wordStyleArr));
-          pageLoadingSignal['style']['visibility']='hidden';
-          hocrArr=[];
-          wordStyleArr=[];
-        }
-        
-        const pixelRatio=window.devicePixelRatio*2;
-        async function scalePDFPage() {
-            let pdfOriginalWidth = _PAGE.getViewport(_ZOOM_FACTOR).width;
-            let viewport = _PAGE.getViewport(_ZOOM_FACTOR);
-            let viewpointHeight=viewport.height;
-
-            _CANVAS.width=pdfOriginalWidth*pixelRatio;
-            _CANVAS.height=viewpointHeight*pixelRatio;
-
-            _CANVAS['style']['width'] = `${pdfOriginalWidth}px`;
-            _CANVAS['style']['height'] = `${viewpointHeight}px`;
-
-            _CANVAS.getContext('2d').scale(pixelRatio, pixelRatio);
-
-            var renderContext = {
-                canvasContext: _CANVAS.getContext('2d'),
-                viewport: viewport
-            };
-            try {
-                await _PAGE.render(renderContext);
-            } catch(error) {
-                alert(error.message);
-            }
-            return new Promise((resolve => resolve(_CANVAS.toDataURL())));
-        }
-
-        var imgPreview=document.getElementById('img-preview');
-        var ocrImgProgress=document.getElementById('ocrImgProgress');
-        var ocrImgProgressStatus=document.getElementById('ocrImgProgressStatus');
-
-        var uploadImgBtn=document.getElementById('uploadImgBtn');
-        var uploadImg=document.getElementById('uploadImg');
-        uploadImgBtn.addEventListener('click', () => {
-          uploadImg.click();
-        });
-
-        var imgWorker;
-        async function initTesseractImgWorker() {
-          imgWorker = Tesseract.createWorker({
-              workerPath: tesseractWorkerPath,
-              langPath:  tesseractLangPath,
-              corePath: tesseractCorePath,
-              logger: msg => {
-                console.log(msg);
-                if(msg.status=='recognizing text') {
-                  ocrImgProgress['style']['width']=`${parseInt(parseFloat(msg.progress)*100)}%`;
-                  ocrImgProgressStatus.innerHTML=`<p class='mb-1 mt-1'>⏳ <strong>${parseInt(parseFloat(msg.progress)*100)}%</strong></p>`;
-                }
-              }
-          });
-          Tesseract.setLogging(true);
-
-          await imgWorker.load();
-          await imgWorker.loadLanguage('eng');
-          await imgWorker.initialize('eng');
-
-          return new Promise((resolve) => resolve('worker initialised.'));
-        }
-
-        uploadImg.addEventListener('change', (ev) => {
-          let file = ev.currentTarget.files[0];
-          if(!file) return;
-
-          (async () => {
-              await initTesseractImgWorker();
-
-              let b64str=await readFileAsDataURL(file);
-              imgPreview['style']['background-image']='url("'+b64str+'")';
-              let loadedImg = await loadImage(b64str);
-
-              const result=await imgWorker.recognize(loadedImg);
-              // console.log(result);
-
-              let hocr=result.data.hocr;
-              hocrArr.push(hocr);
-
-              let words=result.data.words;
-              let combinedText='';
-              for(let w of words) {
-                let font_name=w.font_name;
-                let font_size=w.font_size;
-                let in_dictionary=w.in_dictionary;
-                let is_bold=w.is_bold;
-                let is_italic=w.is_italic;
-                let is_monospace=w.is_monospace;
-                let is_numeric=w.is_numeric;
-                let is_serif=w.is_serif;
-                let is_smallcaps=w.is_smallcaps;
-                let is_underlined=w.is_underlined;
-
-                let styleObj={
-                  "font_name":font_name,
-                  "font_size":font_size,
-                  "in_dictionary":in_dictionary,
-                  "is_bold":is_bold,
-                  "is_italic":is_italic,
-                  "is_monospace":is_monospace,
-                  "is_serif":is_serif,
-                  "is_smallcaps":is_smallcaps,
-                  "is_underlined":is_underlined
-                };
-                wordStyleArr.push(styleObj);
-
-                let str=(w.text);
-                let newStr = ( str.length>1 && str.charAt(str.length-1)=='-' ) ? str.substr(0,str.length-1) : (str+' ');
-                combinedText+=newStr;
-              }
-              inputText.insertAdjacentText('beforeend', (' ' + combinedText));
-              await imgWorker.terminate();
-
-              // console.log(JSON.stringify(hocrArr));
-              // console.log(JSON.stringify(wordStyleArr));
-              ocrImgProgress['style']['width']='100%';
-              ocrImgProgress.classList.remove('progress-bar-animated');
-              ocrImgProgressStatus.innerHTML=`<p class='mb-1 mt-1'>⌛ <strong>Done.</strong></p>`;
-              hocrArr=[];
-              wordStyleArr=[];
-          })();
-        }, false);
-      });
-    </script>
+    <script src='js/main.js'></script>
   </body>
 </html>

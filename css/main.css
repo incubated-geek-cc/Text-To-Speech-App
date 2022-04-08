@@ -64,7 +64,7 @@ span#pageLoadingSignal {
   visibility: hidden;
 }
 #processedPages {
-  height: calc(50vh - 2px - 1.75em - 1.75em);
+  height: calc(50vh - 2px - 4.5em - 0.8rem);
   width: -webkit-fill-available;
   position: relative;
   display: inline-block;
