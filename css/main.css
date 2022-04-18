@@ -72,3 +72,14 @@ span#pageLoadingSignal {
   overflow: auto;
   overflow-y: auto;
 }
+img#siteLogo {
+  height:calc(2rem - 1px);
+}
+
+hr {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+.unicode {
+  font-family:cambria;
+}

@@ -14,7 +14,7 @@
       <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' />
       <meta http-equiv='X-UA-Compatible' content='IE=Edge,chrome=1' />  
       <meta http-equiv='Content-Language' content='en' />
-      <title>Text-To-Speech | Browser Tool</title>
+      <title>Text2Speech App | Browser Tool</title>
       <meta name='msapplication-TileColor' content='#ffffff' />
       <meta name='theme-color' content='#ffffff' />
       <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />
@@ -33,7 +33,7 @@
         <div class="row">
           <div class='col-sm-4 col-12'>
             <div class="card rounded-0">
-              <div class="card-header p-1">🗣 🔈 <strong>Voice Settings</strong></div>
+              <div class="card-header pl-1 pr-1 pt-0 pb-0"><img id='siteLogo' src='img/logo.png' alt='Text2SpeechLogo' class='m-1' />™ 🗣🔈 <strong>Speech Settings</strong></div>
               <div id='speechSettingsCard' class="card-body p-2">
                 <div class='row'>
                   <div class='col-4 col-sm-4'>
@@ -54,13 +54,13 @@
           </div>
           <div class='col-sm-8 col-12'>
             <div class="card rounded-0">
-              <div class="card-header p-1">┏🠉┓<strong>Upload File Content</strong>
-                <button type="button" class="btn btn-outline-dark btn-sm rounded-circle ml-2 pl-1 pr-1 pt-0 pb-0" data-toggle="popover" data-title="❭⎽⎽ Tesseract OCR Engine" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶&nbsp;<small class='text-muted'><a href='https://github.com/naptha/tesseract.js' target='_blank'>TesseractJS</a> is an open-sourced OCR Engine which leverages on character recognition technology for text extraction.</small></p><p>❷&nbsp;<small class='text-muted'>By default, <strong>all pages</strong> in the PDF file shall be processed for text extraction (for this release).</small></p><p>❸&nbsp;<small class='text-muted'>This software is opened to public for use licensed under ⚖ <a href='LICENSE-2.0.txt' target='_blank'>Apache-2.0 License</a>.</small></p></p>"><small>👆*</small></button>
+              <div class="card-header p-1">┏🠉┓ <strong>Upload File Content</strong>
+                <button type="button" class="btn btn-light border-primary btn-sm rounded-circle text-primary ml-2" data-toggle="popover" data-title="❭⎽⎽ Tesseract OCR Engine" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶ <small class='text-muted'><a href='https://github.com/naptha/tesseract.js' target='_blank'>TesseractJS</a> is an open-sourced OCR Engine which leverages on character recognition technology for text extraction.</small></p><p>❷ <small class='text-muted'>By default, <strong>all pages</strong> in the PDF file shall be processed for text extraction (for this release).</small></p><p>❸ <small class='text-muted'>This software is opened to public for use licensed under ⚖ <a href='LICENSE-2.0.txt' target='_blank'>Apache-2.0 License</a>.</small></p></p>"><small>👆*</small></button>
               </div> 
               <div id='uploadFileContentCard' class="card-body p-2">
                   <div class='row'> 
                     <div class='col-4 mr-0'>
-                      <p class='w-100'><button id='uploadImgBtn' type='button' class='btn btn-sm btn-outline-primary rounded-0'><small>📂 Select Image</small><input id='uploadImg' type='file' accept='image/*' /></button></p>
+                      <p class='w-100'><button id='uploadImgBtn' type='button' class='btn btn-sm btn-outline-primary rounded-0'><small>📂 Select Image…</small><input id='uploadImg' type='file' accept='image/*' /></button></p>
                       <hr>
                       <div id='img-preview' class='small border text-center'></div>
                       <small><strong>🔄 Image Text Extraction</strong></small>
@@ -70,7 +70,7 @@
                       <small id='ocrImgProgressStatus' class='small'></small>
                     </div>
                     <div class='col-5 mr-0'>
-                      <p class='w-100'><button id='uploadPDFBtn' type='button' class='btn btn-sm btn-outline-primary rounded-0'><small>📂 Select PDF</small><input id='uploadPDF' type='file' accept='.pdf,.PDF' /></button> <span id='pageLoadingSignal'><span class="spinner-border spinner-border-sm"></span>&nbsp;<small class='text-muted'>Processing Page <span id='currentPageNo'>?</span><b>&nbsp;/&nbsp;<span id="totalPages">?</span>&nbsp;</b></small></span></p>
+                      <p class='w-100'><button id='uploadPDFBtn' type='button' class='btn btn-sm btn-outline-primary rounded-0'><small>📂 Select PDF…</small><input id='uploadPDF' type='file' accept='.pdf,.PDF' /></button> <span id='pageLoadingSignal'><span class="spinner-border spinner-border-sm"></span>&nbsp;<small class='text-muted'>Processing Page <span id='currentPageNo'>?</span><b>&nbsp;/&nbsp;<span id="totalPages">?</span>&nbsp;</b></small></span></p>
                       <hr>
                       <div id='page-preview' class='small border text-center'></div>
                       <small><strong>🔄 Page Text Extraction</strong></small>
@@ -80,7 +80,7 @@
                       <small id='ocrPageProgressStatus' class='small'></small>
                     </div>
                     <div class='col-3 mr-0'>
-                      <small class='text-dark'>List of Processed Page(s)</small>
+                      <small class='text-dark'>📄 Processed Page(s)</small>
                       <small id='processedPages' class='border small'></small>
                     </div>
                   </div>
@@ -93,10 +93,10 @@
           <div class='col-12'>
             <div id='controllerCard' class="card rounded-0">
               <div class="card-header p-1">
-                  <p class='mb-2 mt-2 mr-1'>💬 <strong>Text-to-Speech Controller</strong><button type="button" class="btn btn-outline-dark btn-sm rounded-circle ml-2 pl-1 pr-1 pt-0 pb-0" data-toggle="popover" data-title="🔎 User Guide 👀" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶&nbsp;⎆⎃&nbsp;<small class='text-muted'>Select <span class='badge badge-light rounded-circle border border-info text-info'><small>⯈</small></span> to listen to text․</small></p><p>❷&nbsp;⎇⎀&nbsp;<small class='text-muted'>Manual edits & inputs are enabled in the text field․</small></p><p>❸&nbsp;⎁⎂&nbsp;<small class='text-muted'>Upload an image file/pdf doc for text extraction. Upon completion, output shall auto-append itself to existing input content․</small></p><p><strong>ℹ Speech Controls</strong><ul><li>▶⇆⏸ <small class='text-info'>Toggle between play﹠pause.</small></li><li>▶→⏸⇆⏯ <small class='text-info'>Speech shall resume if paused before completion (assuming no stop command is triggered.).</small></li><li>⏹ <small class='text-danger'>Stops the speech regardless of completion status.</small></li></ul></p></p>"><small>👆*</small></button><span class='float-right'><button id='speakBtn' class="btn btn-sm btn-outline-info rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>▶</small></button> <button id='stopBtn' class="btn btn-sm btn-outline-danger rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>■</small></button> <button id='downloadTextContent' class="btn btn-sm btn-outline-primary pl-2 pr-2 pt-0 pb-1 ml-4" type='button'><small>┏🠋┓ Plain Text</small></button></span></p>
+                  <p class='m-0'><button type="button" class="btn btn-light border-primary btn-sm rounded-circle text-primary ml-2" data-toggle="popover" data-title="🔎 User Guide 👀" data-dismissible="true" data-placement="right" data-content="<p class='mb-0'><p>❶ ⎆⎃ <small class='text-muted'>Select <span class='badge badge-light rounded-circle border border-info text-info'><small>⯈</small></span> to listen to text․</small></p><p>❷ ⎇⎀ <small class='text-muted'>Manual edits & inputs are enabled in the text field․</small></p><p>❸ ⎁⎂ <small class='text-muted'>Upload an image file/pdf doc for text extraction. Upon completion, output shall auto-append itself to existing input content․</small></p><p><strong>ℹ Speech Controls</strong><ul><li>▶⇆⏸ <small class='text-info'>Toggle between play﹠pause.</small></li><li>▶→⏸⇆⏯ <small class='text-info'>Speech shall resume if paused before completion (assuming no stop command is triggered.).</small></li><li>⏹ <small class='text-danger'>Stops the speech regardless of completion status.</small></li></ul></p></p>"><small>👆*</small></button> <span class='mr-1 ml-1'>❝ᴛᴇxᴛ2sᴘᴇᴇᴄʜ❞ ᴀᴘᴘ</span> <button id='clearTextBtn' class="btn btn-sm btn-light text-danger rounded-0 ml-2 mr-2" type='button'>🆑ᴇᴀʀ </button><span class='float-right'><button id='speakBtn' class="btn btn-sm btn-light text-info border-info rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>▶</small></button> <button id='stopBtn' class="btn btn-sm btn-light text-danger border-danger rounded-circle pl-2 pr-2 pt-0 pb-1" type='button'><small>■</small></button> <button id='downloadTextContent' class="btn btn-sm btn-light text-primary border-primary rounded-0 pl-2 pr-2 pt-0 pb-1 ml-4" type='button'><small>┏🠋┓ ᴇxᴘᴏʀᴛ ᴀs ᴘʟᴀɪɴᴛᴇxᴛ…</small></button></span></p>
               </div>
               <div class="card-body p-0">
-                <textarea id='inputText' class="form-control rounded-0 m-0"></textarea>
+                <textarea id='inputText' class="form-control rounded-0 m-0 border-0"></textarea>
               </div>
             </div>
           </div>

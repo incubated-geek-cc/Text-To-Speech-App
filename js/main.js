@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
   var inputText=document.getElementById('inputText');
+  var clearTextBtn=document.getElementById('clearTextBtn');
+
+  clearTextBtn.addEventListener('click', (evt)=> {
+    if (confirm('⚠ 𝗜𝗺𝗽𝗼𝗿𝘁𝗮𝗻𝘁 𝗡𝗼𝘁𝗶𝗰𝗲\n\n⯈ You are about to permanently remove all content present within the text field.\n\n⯈ Please proceed to select [ OK ] to confirm deletion. Else, select [ Cancel ] instead to abort action.')) {
+      inputText.value='';
+    }
+  }, false);
 
   var speakBtn=document.getElementById('speakBtn');
   var stopBtn=document.getElementById('stopBtn');
@@ -33,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if(isPaused) {
       $().articulate('resume');
       evt.currentTarget.innerHTML=pauseSymbol;
+    } else {
+      evt.currentTarget.innerHTML=playSymbol;
     }
   }, false);
 
