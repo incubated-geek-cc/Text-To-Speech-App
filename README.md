@@ -1,26 +1,26 @@
 <div align="center">
-	<img src="https://github.com/incubated-geek-cc/Text-To-Speech-App/raw/main/img/logo.png" width="96" alt="logo">
-  	
-  	# 🔎 Text-To-Speech App
+  <img src="https://github.com/incubated-geek-cc/Text-To-Speech-App/raw/main/img/logo.png" width="96" alt="logo">
 
-	<img src="https://miro.medium.com/max/1050/1*HpLqMW2nShvkHuO28XDOZw.png" alt="cover image">
+  # 🔎 Text-To-Speech App
 
-  	### 🛠️ Built with open-sourced OCR Engine: <a href='https://tesseract.projectnaptha.com/' target='_blank'>Tesseract.js v2</a>. An offline in-browser setup.
+  ### 🛠️ Built with open-sourced Tesseract OCR Engine (WebAssembly JavaScript port). An offline in-browser setup.
 
 **A Fusion of OCR Technology (Tesseract.js) & Web Speech API 🗣💬.  Non-mobile responsive 📱🚫.**
 
 <div align="left">
 
-  ### 📌 Features
+📌 Features
 
 </div>
 <div align="left">
-	<ul>
-		<li>Image-to-Text: Input image file for Text Extraction with <a href='https://github.com/tesseract-ocr/tesseract' target='_blank'>Tesseract-OCR</a></li>
-		<li>PDF-to-Image-to-Text: Input PDF File to render each page image for Text Extraction with <a href='https://mozilla.github.io/pdf.js' target='_blank'>PDF.js</a></li>
-		<li>Text-to-Speech: Voice generation with Web API <a href='https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis' target='_blank'>SpeechSynthesis</a></li>
-		<li>Export extracted text to local .txt file.</li>
-	</ul>
+
+<ul>
+	<li>Image-to-Text: Input image file for Text Extraction with <a href='https://github.com/tesseract-ocr/tesseract' target='_blank'>Tesseract-OCR</a></li>
+	<li>PDF-to-Image-to-Text: Input PDF File to render each page image for Text Extraction with <a href='https://mozilla.github.io/pdf.js' target='_blank'>PDF.js</a></li>
+	<li>Text-to-Speech: Voice generation with Web API <a href='https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis' target='_blank'>SpeechSynthesis</a></li>
+	<li>Export extracted text to local .txt file.</li>
+</ul>
+
 </div>
 </div>
 
