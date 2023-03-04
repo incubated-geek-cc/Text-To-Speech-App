@@ -5,11 +5,13 @@
 
   ### 🛠️ Built with open-sourced Tesseract OCR Engine (WebAssembly JavaScript port). An offline in-browser setup.
 
+  <img src="https://miro.medium.com/max/1050/1*HpLqMW2nShvkHuO28XDOZw.png" alt="cover image">
+
 **A Fusion of OCR Technology (Tesseract.js) & Web Speech API 🗣💬.  Non-mobile responsive 📱🚫.**
 
 <div align="left">
 
-📌 Features
+### 📌 Features
 
 </div>
 <div align="left">
