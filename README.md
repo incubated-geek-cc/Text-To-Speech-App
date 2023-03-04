@@ -55,7 +55,7 @@
 ## 📜 License & Credits
 
 <ol>
-	<li>© Copyright - This work is licensed under <a rel="license" href="https://github.com/incubated-geek-cc/Text-To-Speech-App/raw/main/LICENSE.txt">Apache License</a>
+	<li>© Copyright - This work is licensed under <a rel="license" href="https://raw.githubusercontent.com/incubated-geek-cc/Text-To-Speech-App/main/LICENSE-2.0.txt">Apache License</a>
 	</li>
 	<li>Original library at <a href='https://tesseract.projectnaptha.com/' target='_blank'>Tesseract.js v2</a> and its co-creator/maintainer <a href="https://github.com/jeromewu" target="_blank">Jerome Wu</a></li>
 </ol>
